@@ -46,10 +46,12 @@ app.post("/get_answer", (req, res) => {
     }).then((response) => {
         // Sending the response data back to the client
         // console.log("RESSS = ",response)
-        res.send(response.data.choices);
+        return res.status(200).json(response.data.choices);
 
         // AXIOS RESPONSE FORMAT
         // console.log(response.data[0].text) for axios response from frontend
+    }).catch((error) =>{
+        return res.status(500).json(error)
     });
 });
 
